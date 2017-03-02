@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+  
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+  
+  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" id="germaine-googlefonts-css" href="https://fonts.googleapis.com/css?family=Great+Vibes%7CLato%3A300%2C300i%2C900&amp;subset=latin-ext&amp;ver=4.7.2" type="text/css" media="all">
+  
+
+  
+  <title>ブログサイトの作成</title>
+
+  
+  
+  <link rel="stylesheet" href="https://hayashidac.github.io/css/hugo-octopress.css">
+
+  
+  
+
+  
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+
+  
+  <link href="https://hayashidac.github.io/cropped-fruit_orange2-1-32x32.png" rel="icon">
+
+  
+  
+  
+
+  
+
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+
+  <meta name="author" content="Author&#39;s name">
+
+  
+  <meta name="generator" content="Hugo 0.2-DEV" />
+
+  
+  
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'google analytics', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+</head>
+<body>
+
+
+<header role="banner"><hgroup>
+  
+  <h1><a href="https://hayashidac.github.io/">Chie&#39;s Happy Engineer Life</a></h1>
+    <h2>Subtitle appears under website title</h2>
+</hgroup></header>
+
+
+<nav role="navigation">
+
+<ul class="main-navigation">
+  
+  
+    
+      <li><a href="https://hayashidac.github.io/chie/index.html" title="AboutMe" >AboutMe</a></li>
+    
+  
+    
+      <li><a href="https://hayashidac.github.io/" title="Blog">Blog</a></li>
+    
+  
+</ul>
+
+
+<ul class="subscription">
+  
+    
+        <a href="https://hayashidac.github.io/index.xml" target="_blank" type="application/rss+xml" title="RSS"><i class="fa fa-rss-square fa-lg"></i></a>
+    
+  
+
+</ul>
+
+
+</nav>
+
+
+<div id="main">
+  <div id="content">
+    <div>
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+    <p class="meta">Feb 23, 2017
+         - 1 minute read 
+         - <a href="https://hayashidac.github.io/blog/2017/02/23/%E3%83%96%E3%83%AD%E3%82%B0%E3%82%B5%E3%82%A4%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90/#disqus_thread">Comments</a>
+
+        
+        
+        
+            - <a class="label" href="https://hayashidac.github.io/categories/%e6%9c%aa%e5%88%86%e9%a1%9e/">未分類 </a>
+        
+    </p>
+    <h1 class="entry-title">
+         ブログサイトの作成 
+    </h1>
+</header>
+
+
+        <div class="entry-content">
+          
+          
+          
+          
+
+<h3 id="はじめに">はじめに</h3>
+
+<p>ブログ書こうと思って、サイトをつくってみました。</p>
+
+<p>あんまりもともと筆不精なので、続くかわかりませんが、学んだ技術とか好きなことを書いてみようと思います！</p>
+
+<p>最初のネタは、ブログの開設方法です！</p>
+
+<h3 id="ブログサイトの作り方">ブログサイトの作り方</h3>
+
+<p>ブログを始めよう！と思った時に、どこに開設するかを決めないと行けません。</p>
+
+<p>方法としては、大きく以下の方法があります。</p>
+
+<ol>
+<li>アメブロ、はてなブログといったブログサービスに登録する</li>
+<li>さくら、ロリポップなどのレンタルサーバを借りてWordpressで構築する</li>
+<li>AWSなどのIaaS環境や自分のお家のサーバ上にwordpressやJoomlaなどをインストールして作る</li>
+</ol>
+
+<p>1.は構築や運用が楽ちんですが、登録先のサービス任せなので、カスタマイズ性が小さくなります。（有料にするとある程度色々できますが）</p>
+
+<p>また、ブログサービス内のランキングとか検索など、それぞれのブログサービス独自の機能があり、自分のブログへの流入を見込んだり、ブログサービス利用者間での交流につながったりします。</p>
+
+<p>逆に3.は、サーバ運用やSEO対策など、すべて自分で行わないといけないので大変ですが、自由にカスタマイズができる面白みがあります。</p>
+
+<ol>
+<li><p>はその中間です。HWやOS/ミドルウェアは選べない代わりに、その運用は意識する必要はありません。Wordpressのインストールも、ボタン一発でできます。Wordpress上の設定は自由にできるので、1.と比べると外観などが自由にカスタマイズできます。</p></li>
+
+<li><p>3.は、SEO対策を頑張らないと、サイト閲覧数はなかなか上がらないかもしれません。</p></li>
+</ol>
+
+<p>私は、今回のブログ開設にあたっては、2.を選びました。</p>
+
+<h3 id="レンタルサーバをどこで借りるか">レンタルサーバをどこで借りるか</h3>
+
+<p>レンタルサーバの借り先としては、主に<a href="http://www.sakura.ne.jp/" target="_blank">さくらのレンタルサーバ</a>、<a href="https://lolipop.jp/" target="_blank">ロリポップ</a>、<a href="https://www.xserver.ne.jp/" target="_blank">XSERVER</a>があります。</p>
+
+<p>初めてということで、一番安く、10日間無料でお試しができるということで、ロリポップを選択しました。</p>
+
+<p>レンタルサーバの比較をしているサイトがいくつかあるので、参考にすると良いと思います。</p>
+
+<p><a href="https://rentalserver-comparison.net/" target="_blank">レンタルサーバー比較｜料金と機能の一覧【2017年・最新情報】</a></p>
+
+<p><a href="http://wp-fun.com/howto/page-928/" target="_blank">プロが比較！おすすめレンタルサーバー &#8211; WordPressが高速・安定して動くサーバー</a></p>
+
+<h3 id="最初にやること">最初にやること</h3>
+
+<p>まずはレンタルサーバの申し込み、wordpressをインストールすると、もうブログを書き始めることができる状態になっています。</p>
+
+<p>サイトのドメインもこだわりたい場合は、<a href="https://muumuu-domain.com/" target="_blank">ムームードメイン</a>や<a href="http://www.onamae.com/" target="_blank">お名前.com</a>でドメインを取得しましょう。</p>
+
+<p>私は、〜.comとかにしたい気持ちもありましたが、レンタルサーバの月額よりドメイン確保の方が高いことと、</p>
+
+<p>ロリポップには無料で使えるおしゃれな感じのドメイン名がたくさんあったので、ドメイン契約はせず、ロリポップで無償で選択できるドメインを選びました。</p>
+
+<p>wordpressを使うにあたって、入れておいた方が良いプラグインがあります。</p>
+
+<p>私は以下サイトを参考に、プラグインのインストールを行いました。</p>
+
+<p><a href="http://netaone.com/wp/wordpress-plugin-first/" target="_blank">WordPressの優良プラグイン50選、最初にインストールすると超便利</a></p>
+
+<p>だいたいこんな感じで終わりです。</p>
+
+<p>あとは頑張って記事を書くだけ！</p>
+
+        </div>
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn">Author&#39;s name</span></span>
+    
+    <time>Feb 23, 2017</time>
+    
+    </span>
+  </p>
+
+  
+  
+
+  
+
+  <p class="meta">
+    
+
+    
+      <a class="basic-alignment right" href="https://hayashidac.github.io/blog/2017/02/25/%E9%9B%BB%E5%AD%90%E6%9B%B8%E7%B1%8D/" title="電子書籍">電子書籍</a>
+    
+  </p>
+  
+</footer>
+
+      </article>
+    </div>
+    
+
+<aside class="sidebar thirds">
+  <section class="first odd">
+
+    
+      <h1>Sidebar Header</h1>
+    
+
+    <p>
+      
+        Sidebar text is passed to <em>markdownify</em> so it supports markdown. Here&rsquo;s a <a href="https://www.google.com" target="_blank">linke to google</a>
+ </br>
+ Second line
+ </br>
+ Third line
+      
+    </p>
+  </section>
+
+
+
+  
+  <ul class="sidebar-nav">
+    <li class="sidebar-nav-item">
+      <a target="_blank" href="https://github.com/hayashidac/" title="https://github.com/hayashidac/"><i class="fa fa-github fa-3x"></i></a>
+      <a target="_blank" href="https://bitbucket.org/chie8842/" title="https://bitbucket.org/chie8842/"><i class="fa fa-bitbucket fa-3x"></i></a>
+      
+      <a target="_blank" href="https://twitter.com/chie8842/" title="https://twitter.com/chie8842/"><i class="fa fa-twitter fa-3x"></i></a>
+       
+      <a target="_blank" href="https://www.linkedin.com/in/chie-hayashida-bb99b286/" title="https://www.linkedin.com/in/chie-hayashida-bb99b286/"><i class="fa fa-linkedin fa-3x"></i></a>
+      
+      
+      <a target="_blank" href="https://www.facebook.com/chie.hayashida" title="https://www.facebook.com/chie.hayashida"><i class="fa fa-facebook fa-3x"></i></a>
+      
+      
+
+    
+    
+    </li>
+  </ul>
+
+  
+
+  
+    
+      <section class="odd">
+        
+        
+          <li>
+            <a href="https://hayashidac.github.io/categories/hugo/" title="Hugo" >Hugo</a>
+          </li>
+        
+          <li>
+            <a href="https://hayashidac.github.io/" title="Homepage" >Homepage</a>
+          </li>
+        
+          <li>
+            <a href="https://www.google.com" title="Google" >Google</a>
+          </li>
+        
+      </section>
+    
+  
+
+  
+  
+  
+    
+      <section class="even">
+        <h1>Recent Posts</h1>
+        <ul id="recent_posts">
+          
+            <li class="post">
+              <a href="https://hayashidac.github.io/blog/2017/02/25/%E8%8B%B1%E8%AA%9E%E3%81%AE%E5%AD%A6%E7%BF%92%E3%83%84%E3%83%BC%E3%83%AB/">英語の学習ツール</a>
+            </li>
+          
+            <li class="post">
+              <a href="https://hayashidac.github.io/blog/2017/02/25/%E9%9B%BB%E5%AD%90%E6%9B%B8%E7%B1%8D/">電子書籍</a>
+            </li>
+          
+            <li class="post">
+              <a href="https://hayashidac.github.io/blog/2017/02/23/%E3%83%96%E3%83%AD%E3%82%B0%E3%82%B5%E3%82%A4%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90/">ブログサイトの作成</a>
+            </li>
+          
+            <li class="post">
+              <a href="https://hayashidac.github.io/blog/categories/">Categories</a>
+            </li>
+          
+            <li class="post">
+              <a href="https://hayashidac.github.io/blog/">Chie&#39;s Happy Engineer Life</a>
+            </li>
+          
+            <li class="post">
+              <a href="https://hayashidac.github.io/blog/post/">Posts</a>
+            </li>
+          
+            <li class="post">
+              <a href="https://hayashidac.github.io/blog/categories/%E6%9C%AA%E5%88%86%E9%A1%9E/">未分類</a>
+            </li>
+          
+        </ul>
+      </section>
+    
+  
+
+</aside>
+
+  </div>
+</div>
+
+<footer role="contentinfo">
+  <p>Copyright &copy; 2017 Author&#39;s name - <a href="https://hayashidac.github.io/license/">License</a> -
+  <span class="credit">Powered by <a target="_blank" href="https://gohugo.io">Hugo</a> and <a target="_blank" href="https://github.com/parsiya/hugo-octopress/">Hugo-Octopress</a> theme.
+</p>
+
+</footer>
+
+
+<script>
+  var _gaq=[['_setAccount','google analytics'],['_trackPageview']];
+  (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+  g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+
+</body>
+</html>
+
