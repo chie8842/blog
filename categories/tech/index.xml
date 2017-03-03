@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tech on Chie&#39;s Happy Engineer Life</title>
+    <link>https://hayashidac.github.io/blog/categories/tech/index.xml</link>
+    <description>Recent content in Tech on Chie&#39;s Happy Engineer Life</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <atom:link href="https://hayashidac.github.io/blog/categories/tech/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>ブログサイトの作成</title>
+      <link>https://hayashidac.github.io/blog/2017/02/23/%E3%83%96%E3%83%AD%E3%82%B0%E3%82%B5%E3%82%A4%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90/</link>
+      <pubDate>Thu, 23 Feb 2017 10:15:46 +0000</pubDate>
+      
+      <guid>https://hayashidac.github.io/blog/2017/02/23/%E3%83%96%E3%83%AD%E3%82%B0%E3%82%B5%E3%82%A4%E3%83%88%E3%81%AE%E4%BD%9C%E6%88%90/</guid>
+      <description>
+
+&lt;h3 id=&#34;はじめに&#34;&gt;はじめに&lt;/h3&gt;
+
+&lt;p&gt;ブログ書こうと思って、サイトをつくってみました。&lt;/p&gt;
+
+&lt;p&gt;あんまりもともと筆不精なので、続くかわかりませんが、学んだ技術とか好きなことを書いてみようと思います！&lt;/p&gt;
+
+&lt;p&gt;最初のネタは、ブログの開設方法です！&lt;/p&gt;
+
+&lt;h3 id=&#34;ブログサイトの作り方&#34;&gt;ブログサイトの作り方&lt;/h3&gt;
+
+&lt;p&gt;ブログを始めよう！と思った時に、どこに開設するかを決めないと行けません。&lt;/p&gt;
+
+&lt;p&gt;方法としては、大きく以下の方法があります。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;アメブロ、はてなブログといったブログサービスに登録する&lt;/li&gt;
+&lt;li&gt;さくら、ロリポップなどのレンタルサーバを借りてWordpressで構築する&lt;/li&gt;
+&lt;li&gt;AWSなどのIaaS環境や自分のお家のサーバ上にwordpressやJoomlaなどをインストールして作る&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;1.は構築や運用が楽ちんですが、登録先のサービス任せなので、カスタマイズ性が小さくなります。（有料にするとある程度色々できますが）&lt;/p&gt;
+
+&lt;p&gt;また、ブログサービス内のランキングとか検索など、それぞれのブログサービス独自の機能があり、自分のブログへの流入を見込んだり、ブログサービス利用者間での交流につながったりします。&lt;/p&gt;
+
+&lt;p&gt;逆に3.は、サーバ運用やSEO対策など、すべて自分で行わないといけないので大変ですが、自由にカスタマイズができる面白みがあります。&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;はその中間です。HWやOS/ミドルウェアは選べない代わりに、その運用は意識する必要はありません。Wordpressのインストールも、ボタン一発でできます。Wordpress上の設定は自由にできるので、1.と比べると外観などが自由にカスタマイズできます。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;3.は、SEO対策を頑張らないと、サイト閲覧数はなかなか上がらないかもしれません。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;私は、今回のブログ開設にあたっては、2.を選びました。&lt;/p&gt;
+
+&lt;h3 id=&#34;レンタルサーバをどこで借りるか&#34;&gt;レンタルサーバをどこで借りるか&lt;/h3&gt;
+
+&lt;p&gt;レンタルサーバの借り先としては、主に&lt;a href=&#34;http://www.sakura.ne.jp/&#34; target=&#34;_blank&#34;&gt;さくらのレンタルサーバ&lt;/a&gt;、&lt;a href=&#34;https://lolipop.jp/&#34; target=&#34;_blank&#34;&gt;ロリポップ&lt;/a&gt;、&lt;a href=&#34;https://www.xserver.ne.jp/&#34; target=&#34;_blank&#34;&gt;XSERVER&lt;/a&gt;があります。&lt;/p&gt;
+
+&lt;p&gt;初めてということで、一番安く、10日間無料でお試しができるということで、ロリポップを選択しました。&lt;/p&gt;
+
+&lt;p&gt;レンタルサーバの比較をしているサイトがいくつかあるので、参考にすると良いと思います。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://rentalserver-comparison.net/&#34; target=&#34;_blank&#34;&gt;レンタルサーバー比較｜料金と機能の一覧【2017年・最新情報】&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://wp-fun.com/howto/page-928/&#34; target=&#34;_blank&#34;&gt;プロが比較！おすすめレンタルサーバー &amp;#8211; WordPressが高速・安定して動くサーバー&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;最初にやること&#34;&gt;最初にやること&lt;/h3&gt;
+
+&lt;p&gt;まずはレンタルサーバの申し込み、wordpressをインストールすると、もうブログを書き始めることができる状態になっています。&lt;/p&gt;
+
+&lt;p&gt;サイトのドメインもこだわりたい場合は、&lt;a href=&#34;https://muumuu-domain.com/&#34; target=&#34;_blank&#34;&gt;ムームードメイン&lt;/a&gt;や&lt;a href=&#34;http://www.onamae.com/&#34; target=&#34;_blank&#34;&gt;お名前.com&lt;/a&gt;でドメインを取得しましょう。&lt;/p&gt;
+
+&lt;p&gt;私は、〜.comとかにしたい気持ちもありましたが、レンタルサーバの月額よりドメイン確保の方が高いことと、&lt;/p&gt;
+
+&lt;p&gt;ロリポップには無料で使えるおしゃれな感じのドメイン名がたくさんあったので、ドメイン契約はせず、ロリポップで無償で選択できるドメインを選びました。&lt;/p&gt;
+
+&lt;p&gt;wordpressを使うにあたって、入れておいた方が良いプラグインがあります。&lt;/p&gt;
+
+&lt;p&gt;私は以下サイトを参考に、プラグインのインストールを行いました。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://netaone.com/wp/wordpress-plugin-first/&#34; target=&#34;_blank&#34;&gt;WordPressの優良プラグイン50選、最初にインストールすると超便利&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;だいたいこんな感じで終わりです。&lt;/p&gt;
+
+&lt;p&gt;あとは頑張って記事を書くだけ！&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
