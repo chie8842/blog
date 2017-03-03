@@ -1,7 +1,7 @@
 +++
-date = "2017-03-02T11:42:33+09:00"
+date = "2017-03-03T14:41:27+09:00"
 title = "aboutme"
-draft = true
+draft = false
 
 +++
 

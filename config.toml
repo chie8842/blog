@@ -1,10 +1,10 @@
-baseurl = "https://hayashidac.github.io/blog/"
+baseurl = "https://hayashidac.github.io"
 disablePathToLower = false
 languageCode = "ja"
 title = "Chie's Happy Engineer Life"
 theme = "Hugo-Octopress-Orange"
 publishDir = "docs"
-canonifyurls = true
+canonifyurls = false
 
 # Number of blog posts displayed in each page
 paginate = 6
@@ -23,7 +23,7 @@ pygmentscodefences = true
 # pygmentsoptions = "linenos=true"
 
 [permalinks]
-post = "/blog/:year-:month-:day-:title/" # change the post URL to look like the old ones
+post = "/post/:year-:month-:day-:title/" # change the post URL to look like the old ones
 aboutme = "/aboutme/"
 
 # Make tags and categories work
