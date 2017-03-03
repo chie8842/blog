@@ -1,4 +1,4 @@
-baseurl = "https://hayashidac.github.io"
+baseurl = "https://hayashidac.github.io/blog/"
 disablePathToLower = false
 languageCode = "ja"
 title = "Chie's Happy Engineer Life"
@@ -24,7 +24,7 @@ pygmentscodefences = true
 
 [permalinks]
 post = "/post/:year-:month-:day-:title/" # change the post URL to look like the old ones
-aboutme = "/aboutme/"
+aboutme = "/aboutme"
 
 # Make tags and categories work
 [indexes]
@@ -48,18 +48,14 @@ aboutme = "/aboutme/"
 # Sidebar menus
 # Enable with "sidebarMenuEnabled = true" in [params]
 # Header text is "sidebarMenuHeader" in [params]
-[[menu.sidebar]]
- Name = "Google"
- URL = "https://www.google.com"
- weight = 0
 
 [[menu.sidebar]]
- Name = "Hugo"
- URL = "/categories/hugo/"
+ Name = "AboutMe"
+ URL = "https://hayashidac.github.io/chie/index.html"
  weight = 1
 
 [[menu.sidebar]]
- Name = "Homepage"
+ Name = "Blog"
  URL = "/"
  weight = 2
 
@@ -70,17 +66,13 @@ aboutme = "/aboutme/"
  sidebarRecentLimit = 10
 
  # Sidebar header - passed to markdownify so you can write markdown here
- sidebarHeader = "Sidebar Header"
+ sidebarHeader = "About this blog"
 
  # Sidebar text also sipports markdown
  # New lines can be added with </br> or normal markdown (two spaces at the end of line or two new lines).
  # when adding two new lines, remember to remove the indentation otherwise the new line will be treated as a codeblock
-        sidebarText = """Sidebar text is passed to *markdownify* so it supports markdown. Here's a [linke to google](https://www.google.com)
- </br>
- Second line
- </br>
- Third line
- """
+sidebarText = """ただの日記です。技術的に学んだことも書こうと思っていますが、あくまで自分用メモです。"""
+
  # Sidebar menu - if true will add a sidebar menu between sidebar text and recent posts
  sidebarMenuEnabled = true
  sidebarMenuHeader = "Sidebar Links"
@@ -101,16 +93,16 @@ aboutme = "/aboutme/"
 
  # If set to true, navigation menu links will open in a new window with the exception of links to root ("\")
  # If this item does not exist or set to false, then navigation menu links will open in the same window
- navigationNewWindow = false
+ navigationNewWindow = true
 
  # If false, all of the post will appear on front page (and in pagination)
  truncate = true
 
  # Author's name (this will appear in metadata and under posts)
- author = "Author's name"
+ author = "Chie Hayashida"
 
  # This text appears in the site header under website title
- subtitle = "Subtitle appears under website title"
+ subtitle = "楽しいこといっぱいかけたらいいなー"
 
  # Used in the search engine
  searchEngineURL = "https://www.google.com/search"
@@ -119,11 +111,20 @@ aboutme = "/aboutme/"
  continueReadingText = "Would you like to know more?"
 
  # Google analytics code
- googleAnalytics = "google analytics"
+ googleAnalytics = """<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-92983633-1', 'auto');
+  ga('send', 'pageview');
+
+</script>"""
 
  # Disqus shortcode
  # Disable comments for a specific post by adding "comments: false" in its frontmatter
- disqusShortname = "Your disqus shortname"
+ disqusShortname = "chie8842-hugo"
 
  rss = true  # switch to true to enable RSS icon link
 
@@ -132,7 +133,7 @@ aboutme = "/aboutme/"
  textrss = false
 
  # Website's default description
- defaultDescription = ""
+ defaultDescription = "description!"
 
  # Populate this with your own search keywords - these will appear in the meta tags
  # defaultKeywords = ["keyword1" , "keyword2" , "keyword3" , "keyword4"]
