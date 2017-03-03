@@ -772,7 +772,7 @@ body.sidebar-footer .toggle-sidebar {
     }
 }
 body>header {
-    background: url(//169.254.173.205:1313/orange.jpg) left top no-repeat #fff;
+    background: url(/blog/orange.jpg) left top no-repeat #fff;
     background-size:cover;
 /*   background: #333 */
 }
