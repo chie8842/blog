@@ -124,17 +124,21 @@ ga('send', 'pageview');
 
 
         
-          <p>Surface Book買ってGPGPUで遊ぼうとおもったけど障壁が高かった話 はじめに Surface BookにNVIDIAのGPUが付けられる！ということで、 仮想サーバ上でGPGPUを試してみよう！と思ったけど、挫折したときの記録です。
+          <p>はじめに Surface BookにNVIDIAのGPUが付けられる！ということで、 仮想サーバ上でGPGPUを試してみよう！と思ったけど、挫折したときの記録です。
 Surface Bookゲット 持ち歩き用にずっとMacBookAirを使ってたけど、今どきメモリ4GBとかで結構不便を感じることが多かったので、 思い切ってSurface Bookを買ってみた。
 オプションでNVIDIAのGPUが付けることができるということ。 ちなみに、Surface Bookでは、CPU/メモリ/ストレージ/バッテリといった主なモジュールは画面側についているけれど、GPUはキーボード側についているらしい。 こんな薄いのにcorei7だしメモリ16GB、SSD512GBでGPUつきとか、すごい！！！
 ということで、ぽん！買ってしまった！高かった！！！
 仮想サーバでGPU とりあえずGPU使うならLinuxでしょ！と思った。 VirtualBoxでは、デフォルトでPCIパススルーの機能がないらしいので、使えない。 （Linux版のVirtualBoxでは、現在experimentalでextension packsがあるらしい。）Hyper-Vは仮想GPU対応しているということなので、 Hyper-V上にUbuntuたててみた。 よしよし、GPUが見えるか確認するぞ！ どん！
-$ lspci | grep -i nvidia （何も表示されない。） ？？？
-Hyper-Vの設定-&gt;物理GPUの設定を確認する。 Surface Bookには、 * Intel HD Graphics 520 * NVIDIA GeForce GPU の2つのGPUを搭載している。 このうち、NVIDIA GeForce GPUを指定すると、 「このGPUはRemoteFXの最小要件を満たしていません」 とのこと。 Windows上で仮想CPUを使う場合、RemoteFXというのが必要らしい。 RemoteFXの詳しい説明は、以下参照。 マイクロソフト RemoteFXの説明
+$ lspci | grep -i nvidia （何も表示されない。）  ？？？
+Hyper-Vの設定-&gt;物理GPUの設定を確認する。 Surface Bookには、
+ Intel HD Graphics 520 NVIDIA GeForce GPU  の2つのGPUを搭載している。
+このうち、NVIDIA GeForce GPUを指定すると、 「このGPUはRemoteFXの最小要件を満たしていません」 とのこと。 Windows上で仮想CPUを使う場合、RemoteFXというのが必要らしい。 RemoteFXの詳しい説明は、以下参照。
+マイクロソフト RemoteFXの説明
 Surface Bookに搭載されているGPUの調査 そもそも、GeForceのバージョンがかいてないけど、こいつは何者なのか。。。 DeviceManagerとか確認しても、バージョンがどこにも書いていなかった。。。
 そこで、GPU-Zという、搭載されているGPUに関するスペックやステータスなどの情報が見られる軽量ツールをインストールしてみた。
 尚、GPU-Zを使うには、OpenCLがないと、エラーが発生してGPU情報がうまく見られない。OpenCLインストール後は、OS再起動が必要となる。
-GPU-Zで確認できたSurface BookのGPU情報はこちら。 この情報を、NVIDIAのGeForceのスペックページやNVIDIA モバイルグラフィックス・スペック性能比較|パソコン実験工房資料室で確認されるほかのGeForceシリーズのGPUのスペックと比べてみる。
+GPU-Zで確認できたSurface BookのGPU情報はこちら。
+この情報を、NVIDIAのGeForceのスペックページやNVIDIA モバイルグラフィックス・スペック性能比較|パソコン実験工房資料室で確認されるほかのGeForceシリーズのGPUのスペックと比べてみる。
  コア Surface BookのGPUの搭載コアは、GM108というものである。これは、他のNVIDIAシリーズのGPUで言うと、 GeForce 940M, 930M, 845M1, 840M, 830Mで採用されているらしい。 現在のノートPC用の最新はGeForce 980なので、決して新しくはなさそうである。 メモリ ノートPC用のGeForce GTXシリーズでは、DDR3とGDDR5の2種類のメモリが利用されている。GPU-Zで確認されたSurface BookのGPUの搭載メモリは、高性能のGDDR5の方だった。 メモリ容量は、多くのGeForce900M/800Mシリーズが2GB以上であるのに対し、Surface BookのGPUの搭載メモリは1024MBと小さい。  分かったこと  Surface Bookには、GeForce GPUが搭載されているけれど、仮想GPUは使えない。 Surface Book搭載のGPUは、NVIDIA公式ページで確認されるどのバージョンのGeForceシリーズのGPUとも一致しない。 スペック的には、GeForce 940M, 930M, 845M, 840M, 830Mが近い。決して新しくない。  うーん、GPGPU目当てでSurfaceを買うのはやめた方がいいかも。 次また時間があったら、Windows上でcudaインストールしてGPGPUできるか試してみようかなー。</p>
 
           
@@ -428,65 +432,58 @@ WordPressの優良プラグイン50選、最初にインストールすると超
   </br>
 
   
-  <div class="sidebar-content">
-    <div class="sidebar-header">
-      <span>Categories</span>
-    </div>
-    <div class="categories">
-      <ul>
+  <section class="even">
+  <h1>Categories</h1>
+  <ul>
+    
+      <li>
+        <a href="https://hayashidac.github.io/blog/categories/tech"><span></span>tech (3)</a>
+      </li>
+    
+      <li>
+        <a href="https://hayashidac.github.io/blog/categories/%E8%8B%B1%E8%AA%9E"><span></span>英語 (1)</a>
+      </li>
+    
+  </ul>
+  </section>
+  
+  
+
+  
+    
+    <section class="even">
+    <h1>Tags</h1> 
+    <div class="tagslist">
+      <p class="asidetitle"></p>
+      <ul class="clearfix">
         
-        <li>
-          <a href="https://hayashidac.github.io/blog/categories/tech"><span></span>tech (3)</a>
-        </li>
+          <li><a href="https://hayashidac.github.io/blog/tags/blog" title="blog">blog<sup>1</sup></a></li>
         
-        <li>
-          <a href="https://hayashidac.github.io/blog/categories/%E8%8B%B1%E8%AA%9E"><span></span>英語 (1)</a>
-        </li>
+          <li><a href="https://hayashidac.github.io/blog/tags/gpu" title="gpu">gpu<sup>1</sup></a></li>
+        
+          <li><a href="https://hayashidac.github.io/blog/tags/hyper-v" title="hyper-v">hyper-v<sup>1</sup></a></li>
+        
+          <li><a href="https://hayashidac.github.io/blog/tags/podcast" title="podcast">podcast<sup>1</sup></a></li>
+        
+          <li><a href="https://hayashidac.github.io/blog/tags/surface" title="surface">surface<sup>1</sup></a></li>
+        
+          <li><a href="https://hayashidac.github.io/blog/tags/wordpress" title="wordpress">wordpress<sup>1</sup></a></li>
+        
+          <li><a href="https://hayashidac.github.io/blog/tags/%e3%83%aa%e3%82%b9%e3%83%8b%e3%83%b3%e3%82%b0" title="リスニング">リスニング<sup>1</sup></a></li>
+        
+          <li><a href="https://hayashidac.github.io/blog/tags/%e3%83%ac%e3%83%b3%e3%82%bf%e3%83%ab%e3%82%b5%e3%83%bc%e3%83%90" title="レンタルサーバ">レンタルサーバ<sup>1</sup></a></li>
+        
+          <li><a href="https://hayashidac.github.io/blog/tags/%e6%95%99%e6%9d%90" title="教材">教材<sup>1</sup></a></li>
+        
+          <li><a href="https://hayashidac.github.io/blog/tags/%e6%9c%ac" title="本">本<sup>1</sup></a></li>
+        
+          <li><a href="https://hayashidac.github.io/blog/tags/%e8%8b%b1%e8%aa%9e" title="英語">英語<sup>1</sup></a></li>
+        
+          <li><a href="https://hayashidac.github.io/blog/tags/%e9%9b%bb%e5%ad%90%e6%9b%b8%e7%b1%8d" title="電子書籍">電子書籍<sup>1</sup></a></li>
         
       </ul>
     </div>
-  </div>
-  
-
-  </br>
-  
-    
-      <div class="sidebar-content">
-        <div class="sidebar-header">
-          <span>Tags</span>
-        </div>
-
-        <div class="tagslist">
-	  <p class="asidetitle"></p>
-          <ul class="clearfix">
-            
-            <li><a href="https://hayashidac.github.io/blog/tags/blog" title="blog">blog<sup>1</sup></a></li>
-            
-            <li><a href="https://hayashidac.github.io/blog/tags/gpu" title="gpu">gpu<sup>1</sup></a></li>
-            
-            <li><a href="https://hayashidac.github.io/blog/tags/hyper-v" title="hyper-v">hyper-v<sup>1</sup></a></li>
-            
-            <li><a href="https://hayashidac.github.io/blog/tags/podcast" title="podcast">podcast<sup>1</sup></a></li>
-            
-            <li><a href="https://hayashidac.github.io/blog/tags/surface" title="surface">surface<sup>1</sup></a></li>
-            
-            <li><a href="https://hayashidac.github.io/blog/tags/wordpress" title="wordpress">wordpress<sup>1</sup></a></li>
-            
-            <li><a href="https://hayashidac.github.io/blog/tags/%e3%83%aa%e3%82%b9%e3%83%8b%e3%83%b3%e3%82%b0" title="リスニング">リスニング<sup>1</sup></a></li>
-            
-            <li><a href="https://hayashidac.github.io/blog/tags/%e3%83%ac%e3%83%b3%e3%82%bf%e3%83%ab%e3%82%b5%e3%83%bc%e3%83%90" title="レンタルサーバ">レンタルサーバ<sup>1</sup></a></li>
-            
-            <li><a href="https://hayashidac.github.io/blog/tags/%e6%95%99%e6%9d%90" title="教材">教材<sup>1</sup></a></li>
-            
-            <li><a href="https://hayashidac.github.io/blog/tags/%e6%9c%ac" title="本">本<sup>1</sup></a></li>
-            
-            <li><a href="https://hayashidac.github.io/blog/tags/%e8%8b%b1%e8%aa%9e" title="英語">英語<sup>1</sup></a></li>
-            
-            <li><a href="https://hayashidac.github.io/blog/tags/%e9%9b%bb%e5%ad%90%e6%9b%b8%e7%b1%8d" title="電子書籍">電子書籍<sup>1</sup></a></li>
-            
-          </ul>
-        </div>
-      </div>
+    </section>
     
   
 </aside>

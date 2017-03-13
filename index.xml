@@ -17,8 +17,6 @@
       <guid>https://hayashidac.github.io/blog/2017/03/14/surfacebook%E8%B2%B7%E3%81%A3%E3%81%A6gpgpu%E3%81%A7%E9%81%8A%E3%81%BC%E3%81%86%E3%81%A8%E3%81%8A%E3%82%82%E3%81%A3%E3%81%9F%E3%81%91%E3%81%A9%E9%9A%9C%E5%A3%81%E3%81%8C%E9%AB%98%E3%81%8B%E3%81%A3%E3%81%9F%E8%A9%B1/</guid>
       <description>
 
-&lt;h1 id=&#34;surface-book買ってgpgpuで遊ぼうとおもったけど障壁が高かった話&#34;&gt;Surface Book買ってGPGPUで遊ぼうとおもったけど障壁が高かった話&lt;/h1&gt;
-
 &lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;
 
 &lt;p&gt;Surface BookにNVIDIAのGPUが付けられる！ということで、
@@ -43,35 +41,45 @@ VirtualBoxでは、デフォルトでPCIパススルーの機能がないらし�
 Hyper-V上にUbuntuたててみた。
 よしよし、GPUが見えるか確認するぞ！
 どん！&lt;/p&gt;
-$ lspci | grep -i nvidia
+
+&lt;pre&gt;&lt;code&gt;$ lspci | grep -i nvidia
 （何も表示されない。）
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;？？？&lt;/p&gt;
 
 &lt;p&gt;Hyper-Vの設定-&amp;gt;物理GPUの設定を確認する。
-Surface Bookには、
-* Intel HD Graphics 520
-* NVIDIA GeForce GPU
-の2つのGPUを搭載している。
-&lt;img src=&#34;https://hayashidac.github.io/blog/img/20170308_hyper-v_setting.png&#34; alt=&#34;hyper-vの設定&#34; /&gt;
-このうち、NVIDIA GeForce GPUを指定すると、
+Surface Bookには、&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Intel HD Graphics 520&lt;/li&gt;
+&lt;li&gt;NVIDIA GeForce GPU&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;の2つのGPUを搭載している。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://hayashidac.github.io/blog/img/20170308_hyper-v_setting.png&#34; width=&#34;320px&#34;&gt;&lt;/p&gt;
+
+&lt;p&gt;このうち、NVIDIA GeForce GPUを指定すると、
 「このGPUはRemoteFXの最小要件を満たしていません」
 とのこと。
 Windows上で仮想CPUを使う場合、RemoteFXというのが必要らしい。
-RemoteFXの詳しい説明は、以下参照。
-&lt;a href=&#34;https://technet.microsoft.com/ja-jp/library/ff817578(v=ws.10).aspx&#34; target=&#34;_blank&#34;&gt;マイクロソフト RemoteFXの説明&lt;/a&gt;&lt;/p&gt;
+RemoteFXの詳しい説明は、以下参照。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://technet.microsoft.com/ja-jp/library/ff817578(v=ws.10).aspx&#34; target=&#34;_blank&#34;&gt;マイクロソフト RemoteFXの説明&lt;/a&gt;&lt;/p&gt;
 
 &lt;h2 id=&#34;surface-bookに搭載されているgpuの調査&#34;&gt;Surface Bookに搭載されているGPUの調査&lt;/h2&gt;
 
 &lt;p&gt;そもそも、GeForceのバージョンがかいてないけど、こいつは何者なのか。。。
 DeviceManagerとか確認しても、バージョンがどこにも書いていなかった。。。&lt;/p&gt;
 
-&lt;p&gt;そこで、&lt;a href=&#34;https://www.techpowerup.com/download/gpu-z/&#34; target=&#34;_blank&#34;&gt;GPU-Z&lt;/a&gt;という、搭載されているGPUに関するスペックやステータスなどの情報が見られる軽量ツールをインストールしてみた。&lt;/p&gt;
+&lt;p&gt;そこで、&lt;strong&gt;&lt;a href=&#34;https://www.techpowerup.com/download/gpu-z/&#34; target=&#34;_blank&#34;&gt;GPU-Z&lt;/a&gt;&lt;/strong&gt;という、搭載されているGPUに関するスペックやステータスなどの情報が見られる軽量ツールをインストールしてみた。&lt;/p&gt;
 
 &lt;p&gt;尚、GPU-Zを使うには、&lt;strong&gt;&lt;a href=&#34;https://software.intel.com/en-us/intel-opencl&#34; target=&#34;_blank&#34;&gt;OpenCL&lt;/a&gt;&lt;/strong&gt;がないと、エラーが発生してGPU情報がうまく見られない。OpenCLインストール後は、OS再起動が必要となる。&lt;/p&gt;
 
-&lt;p&gt;GPU-Zで確認できたSurface BookのGPU情報はこちら。
-&lt;img src=&#34;../img/20170308_gpu-z.png&#34; alt=&#34;GPU-Z&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;GPU-Zで確認できたSurface BookのGPU情報はこちら。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://hayashidac.github.io/blog/img/20170308_gpu-z.png&#34; width=&#34;320px&#34;&gt;&lt;/p&gt;
 
 &lt;p&gt;この情報を、&lt;strong&gt;&lt;a href=&#34;http://www.nvidia.co.jp/object/geforce-gtx-900m-graphics-cards-jp.html#pdpContent=2&#34; target=&#34;_blank&#34;&gt;NVIDIAのGeForceのスペックページ&lt;/a&gt;&lt;/strong&gt;や&lt;strong&gt;&lt;a href=&#34;https://www.pc-koubou.jp/blog/nvidia_mobile_gpu_reference.php&#34; target=&#34;_blank&#34;&gt;NVIDIA モバイルグラフィックス・スペック性能比較|パソコン実験工房資料室&lt;/a&gt;&lt;/strong&gt;で確認されるほかのGeForceシリーズのGPUのスペックと比べてみる。&lt;/p&gt;
 
