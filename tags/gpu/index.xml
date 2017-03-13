@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gpu on Chie&#39;s Happy Engineer Life</title>
+    <link>https://hayashidac.github.io/blog/tags/gpu/index.xml</link>
+    <description>Recent content in Gpu on Chie&#39;s Happy Engineer Life</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <atom:link href="https://hayashidac.github.io/blog/tags/gpu/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Surface Bookを買ってGPGPUで遊ぼうと思ったけど障壁が高かった話</title>
+      <link>https://hayashidac.github.io/blog/2017/03/14/surfacebook%E8%B2%B7%E3%81%A3%E3%81%A6gpgpu%E3%81%A7%E9%81%8A%E3%81%BC%E3%81%86%E3%81%A8%E3%81%8A%E3%82%82%E3%81%A3%E3%81%9F%E3%81%91%E3%81%A9%E9%9A%9C%E5%A3%81%E3%81%8C%E9%AB%98%E3%81%8B%E3%81%A3%E3%81%9F%E8%A9%B1/</link>
+      <pubDate>Tue, 14 Mar 2017 02:09:13 +0900</pubDate>
+      
+      <guid>https://hayashidac.github.io/blog/2017/03/14/surfacebook%E8%B2%B7%E3%81%A3%E3%81%A6gpgpu%E3%81%A7%E9%81%8A%E3%81%BC%E3%81%86%E3%81%A8%E3%81%8A%E3%82%82%E3%81%A3%E3%81%9F%E3%81%91%E3%81%A9%E9%9A%9C%E5%A3%81%E3%81%8C%E9%AB%98%E3%81%8B%E3%81%A3%E3%81%9F%E8%A9%B1/</guid>
+      <description>
+
+&lt;h1 id=&#34;surface-book買ってgpgpuで遊ぼうとおもったけど障壁が高かった話&#34;&gt;Surface Book買ってGPGPUで遊ぼうとおもったけど障壁が高かった話&lt;/h1&gt;
+
+&lt;h2 id=&#34;はじめに&#34;&gt;はじめに&lt;/h2&gt;
+
+&lt;p&gt;Surface BookにNVIDIAのGPUが付けられる！ということで、
+仮想サーバ上でGPGPUを試してみよう！と思ったけど、挫折したときの記録です。&lt;/p&gt;
+
+&lt;h2 id=&#34;surface-bookゲット&#34;&gt;Surface Bookゲット&lt;/h2&gt;
+
+&lt;p&gt;持ち歩き用にずっとMacBookAirを使ってたけど、今どきメモリ4GBとかで結構不便を感じることが多かったので、
+思い切ってSurface Bookを買ってみた。&lt;/p&gt;
+
+&lt;p&gt;オプションでNVIDIAのGPUが付けることができるということ。
+ちなみに、Surface Bookでは、CPU/メモリ/ストレージ/バッテリといった主なモジュールは画面側についているけれど、GPUはキーボード側についているらしい。
+こんな薄いのにcorei7だしメモリ16GB、SSD512GBでGPUつきとか、すごい！！！&lt;/p&gt;
+
+&lt;p&gt;ということで、ぽん！買ってしまった！高かった！！！&lt;/p&gt;
+
+&lt;h2 id=&#34;仮想サーバでgpu&#34;&gt;仮想サーバでGPU&lt;/h2&gt;
+
+&lt;p&gt;とりあえずGPU使うならLinuxでしょ！と思った。
+VirtualBoxでは、デフォルトでPCIパススルーの機能がないらしいので、使えない。
+（Linux版のVirtualBoxでは、現在experimentalで&lt;a href=&#34;https://www.virtualbox.org/manual/ch01.html#intro-installing&#34; target=&#34;_blank&#34;&gt;extension packs&lt;/a&gt;があるらしい。）Hyper-Vは仮想GPU対応しているということなので、
+Hyper-V上にUbuntuたててみた。
+よしよし、GPUが見えるか確認するぞ！
+どん！&lt;/p&gt;
+$ lspci | grep -i nvidia
+（何も表示されない。）
+
+&lt;p&gt;？？？&lt;/p&gt;
+
+&lt;p&gt;Hyper-Vの設定-&amp;gt;物理GPUの設定を確認する。
+Surface Bookには、
+* Intel HD Graphics 520
+* NVIDIA GeForce GPU
+の2つのGPUを搭載している。
+&lt;img src=&#34;https://hayashidac.github.io/blog/img/20170308_hyper-v_setting.png&#34; alt=&#34;hyper-vの設定&#34; /&gt;
+このうち、NVIDIA GeForce GPUを指定すると、
+「このGPUはRemoteFXの最小要件を満たしていません」
+とのこと。
+Windows上で仮想CPUを使う場合、RemoteFXというのが必要らしい。
+RemoteFXの詳しい説明は、以下参照。
+&lt;a href=&#34;https://technet.microsoft.com/ja-jp/library/ff817578(v=ws.10).aspx&#34; target=&#34;_blank&#34;&gt;マイクロソフト RemoteFXの説明&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;surface-bookに搭載されているgpuの調査&#34;&gt;Surface Bookに搭載されているGPUの調査&lt;/h2&gt;
+
+&lt;p&gt;そもそも、GeForceのバージョンがかいてないけど、こいつは何者なのか。。。
+DeviceManagerとか確認しても、バージョンがどこにも書いていなかった。。。&lt;/p&gt;
+
+&lt;p&gt;そこで、&lt;a href=&#34;https://www.techpowerup.com/download/gpu-z/&#34; target=&#34;_blank&#34;&gt;GPU-Z&lt;/a&gt;という、搭載されているGPUに関するスペックやステータスなどの情報が見られる軽量ツールをインストールしてみた。&lt;/p&gt;
+
+&lt;p&gt;尚、GPU-Zを使うには、&lt;strong&gt;&lt;a href=&#34;https://software.intel.com/en-us/intel-opencl&#34; target=&#34;_blank&#34;&gt;OpenCL&lt;/a&gt;&lt;/strong&gt;がないと、エラーが発生してGPU情報がうまく見られない。OpenCLインストール後は、OS再起動が必要となる。&lt;/p&gt;
+
+&lt;p&gt;GPU-Zで確認できたSurface BookのGPU情報はこちら。
+&lt;img src=&#34;../img/20170308_gpu-z.png&#34; alt=&#34;GPU-Z&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;この情報を、&lt;strong&gt;&lt;a href=&#34;http://www.nvidia.co.jp/object/geforce-gtx-900m-graphics-cards-jp.html#pdpContent=2&#34; target=&#34;_blank&#34;&gt;NVIDIAのGeForceのスペックページ&lt;/a&gt;&lt;/strong&gt;や&lt;strong&gt;&lt;a href=&#34;https://www.pc-koubou.jp/blog/nvidia_mobile_gpu_reference.php&#34; target=&#34;_blank&#34;&gt;NVIDIA モバイルグラフィックス・スペック性能比較|パソコン実験工房資料室&lt;/a&gt;&lt;/strong&gt;で確認されるほかのGeForceシリーズのGPUのスペックと比べてみる。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;コア
+Surface BookのGPUの搭載コアは、GM108というものである。これは、他のNVIDIAシリーズのGPUで言うと、
+&lt;strong&gt;GeForce 940M, 930M, 845M&lt;sup class=&#34;footnote-ref&#34; id=&#34;fnref:1&#34;&gt;&lt;a rel=&#34;footnote&#34; href=&#34;#fn:1&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;, 840M, 830M&lt;/strong&gt;で採用されているらしい。
+現在のノートPC用の最新は&lt;strong&gt;GeForce 980&lt;/strong&gt;なので、決して新しくはなさそうである。&lt;/li&gt;
+&lt;li&gt;メモリ
+ノートPC用のGeForce GTXシリーズでは、&lt;strong&gt;DDR3&lt;/strong&gt;と&lt;strong&gt;GDDR5&lt;/strong&gt;の2種類のメモリが利用されている。GPU-Zで確認されたSurface BookのGPUの搭載メモリは、高性能のGDDR5の方だった。
+メモリ容量は、多くのGeForce900M/800Mシリーズが2GB以上であるのに対し、Surface BookのGPUの搭載メモリは1024MBと小さい。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;分かったこと&#34;&gt;分かったこと&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Surface Bookには、GeForce GPUが搭載されているけれど、仮想GPUは使えない。&lt;/li&gt;
+&lt;li&gt;Surface Book搭載のGPUは、NVIDIA公式ページで確認されるどのバージョンのGeForceシリーズのGPUとも一致しない。
+スペック的には、GeForce 940M, 930M, 845M, 840M, 830Mが近い。決して新しくない。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;うーん、GPGPU目当てでSurfaceを買うのはやめた方がいいかも。
+次また時間があったら、Windows上でcudaインストールしてGPGPUできるか試してみようかなー。&lt;/p&gt;
+&lt;div class=&#34;footnotes&#34;&gt;
+
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li id=&#34;fn:1&#34;&gt;GeForce 845MはNVIDIAの公式ページには載っていない。
+ &lt;a class=&#34;footnote-return&#34; href=&#34;#fnref:1&#34;&gt;&lt;sup&gt;[return]&lt;/sup&gt;&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
