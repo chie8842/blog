@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
@@ -20,7 +17,7 @@
   
 
   
-  <title>Surface</title>
+  <title>Surface Bookを買ってGPGPUで遊ぼうと思ったけど障壁が高かった話</title>
 
   
   
@@ -39,7 +36,7 @@
   
   
 
-  <link href="https://hayashidac.github.io/blog/tags/surface/index.xml" rel="alternate" type="application/rss+xml" title="Chie&#39;s Happy Engineer Life" />
+  
 
   <meta name="description" content="description!">
   <meta name="keywords" content="">
@@ -103,44 +100,181 @@ ga('send', 'pageview');
 <div id="main">
   <div id="content">
     <div>
-      <article role="article">
-        <header>
-          <h1 class="entry-title">
-            Tag: Surface
-          </h1>
-        </header>
-        <div id="blog-archives" class="category">
+      <article class="hentry" role="article">
+
+        
+        
+
+<header>
+    <p class="meta">Mar 14, 2017
+         - 1 minute read 
+         - <a href="https://hayashidac.github.io/blog/2017/03/14/surfacebook%E8%B2%B7%E3%81%A3%E3%81%A6gpgpu%E3%81%A7%E9%81%8A%E3%81%BC%E3%81%86%E3%81%A8%E3%81%8A%E3%82%82%E3%81%A3%E3%81%9F%E3%81%91%E3%81%A9%E9%9A%9C%E5%A3%81%E3%81%8C%E9%AB%98%E3%81%8B%E3%81%A3%E3%81%9F%E8%A9%B1/#disqus_thread">Comments</a>
+        
+        
+        
+            - <a class="label" href="https://hayashidac.github.io/blog/categories/tech/">tech </a>
+        
+    </p>
+    <h1 class="entry-title">
+         Surface Bookを買ってGPGPUで遊ぼうと思ったけど障壁が高かった話 
+    </h1>
+</header>
+
+
+        <div class="entry-content">
           
-          <h2>
-            2017
-          </h2>
-          <article>
-            <h1>
-              <a href="https://hayashidac.github.io/blog/2017/03/14/surfacebook%E8%B2%B7%E3%81%A3%E3%81%A6gpgpu%E3%81%A7%E9%81%8A%E3%81%BC%E3%81%86%E3%81%A8%E3%81%8A%E3%82%82%E3%81%A3%E3%81%9F%E3%81%91%E3%81%A9%E9%9A%9C%E5%A3%81%E3%81%8C%E9%AB%98%E3%81%8B%E3%81%A3%E3%81%9F%E8%A9%B1/" title="Surface Bookを買ってGPGPUで遊ぼうと思ったけど障壁が高かった話">Surface Bookを買ってGPGPUで遊ぼうと思ったけど障壁が高かった話</a>
-            </h1>
-            <time>
-              <span class="month">Mar</span>
-              <span class="day">14</span>
-            </time>
-            <footer>
-              <span class="categories"> 
-                
-                posted in:
-                 <a class="category" href="https://hayashidac.github.io/blog/categories/tech">tech</a>
-              </br>
-                
-                
-                tags:
-                 <a class="category" href="https://hayashidac.github.io/blog/tags/surface">Surface</a> <a class="category" href="https://hayashidac.github.io/blog/tags/gpu">GPU</a> <a class="category" href="https://hayashidac.github.io/blog/tags/hyper-v">Hyper-V</a>
-                
-              </span>
-            </footer>
-          </article>
           
+          
+          
+
+<h2 id="はじめに">はじめに</h2>
+
+<p>Surface BookにNVIDIAのGPUが付けられる！ということで、
+仮想サーバ上でGPGPUを試してみよう！と思ったけど、挫折したときの記録です。</p>
+
+<h2 id="surface-bookゲット">Surface Bookゲット</h2>
+
+<p>持ち歩き用にずっとMacBookAirを使ってたけど、今どきメモリ4GBとかで結構不便を感じることが多かったので、
+思い切ってSurface Bookを買ってみた。</p>
+
+<p>オプションでNVIDIAのGPUが付けることができるということ。
+ちなみに、Surface Bookでは、CPU/メモリ/ストレージ/バッテリといった主なモジュールは画面側についているけれど、GPUはキーボード側についているらしい。
+こんな薄いのにcorei7だしメモリ16GB、SSD512GBでGPUつきとか、すごい！！！</p>
+
+<p>ということで、ぽん！買ってしまった！高かった！！！</p>
+
+<h2 id="仮想サーバでgpu">仮想サーバでGPU</h2>
+
+<p>とりあえずGPU使うならLinuxでしょ！と思った。
+VirtualBoxでは、デフォルトでPCIパススルーの機能がないらしいので、使えない。
+（Linux版のVirtualBoxでは、現在experimentalで<a href="https://www.virtualbox.org/manual/ch01.html#intro-installing" target="_blank">extension packs</a>があるらしい。）Hyper-Vは仮想GPU対応しているということなので、
+Hyper-V上にUbuntuたててみた。
+よしよし、GPUが見えるか確認するぞ！
+どん！</p>
+
+<pre><code>$ lspci | grep -i nvidia
+（何も表示されない。）
+</code></pre>
+
+<p>？？？</p>
+
+<p>Hyper-Vの設定-&gt;物理GPUの設定を確認する。
+Surface Bookには、</p>
+
+<ul>
+<li>Intel HD Graphics 520</li>
+<li>NVIDIA GeForce GPU</li>
+</ul>
+
+<p>の2つのGPUを搭載している。</p>
+
+<p><img src="https://hayashidac.github.io/blog/img/20170308_hyper-v_setting.png" width="320px"></p>
+
+<p>このうち、NVIDIA GeForce GPUを指定すると、
+「このGPUはRemoteFXの最小要件を満たしていません」
+とのこと。
+Windows上で仮想CPUを使う場合、RemoteFXというのが必要らしい。
+RemoteFXの詳しい説明は、以下参照。</p>
+
+<p><a href="https://technet.microsoft.com/ja-jp/library/ff817578(v=ws.10).aspx" target="_blank">マイクロソフト RemoteFXの説明</a></p>
+
+<h2 id="surface-bookに搭載されているgpuの調査">Surface Bookに搭載されているGPUの調査</h2>
+
+<p>そもそも、GeForceのバージョンがかいてないけど、こいつは何者なのか。。。
+DeviceManagerとか確認しても、バージョンがどこにも書いていなかった。。。</p>
+
+<p>そこで、<strong><a href="https://www.techpowerup.com/download/gpu-z/" target="_blank">GPU-Z</a></strong>という、搭載されているGPUに関するスペックやステータスなどの情報が見られる軽量ツールをインストールしてみた。</p>
+
+<p>尚、GPU-Zを使うには、<strong><a href="https://software.intel.com/en-us/intel-opencl" target="_blank">OpenCL</a></strong>がないと、エラーが発生してGPU情報がうまく見られない。OpenCLインストール後は、OS再起動が必要となる。</p>
+
+<p>GPU-Zで確認できたSurface BookのGPU情報はこちら。</p>
+
+<p><img src="https://hayashidac.github.io/blog/img/20170308_gpu-z.png" width="320px"></p>
+
+<p>この情報を、<strong><a href="http://www.nvidia.co.jp/object/geforce-gtx-900m-graphics-cards-jp.html#pdpContent=2" target="_blank">NVIDIAのGeForceのスペックページ</a></strong>や<strong><a href="https://www.pc-koubou.jp/blog/nvidia_mobile_gpu_reference.php" target="_blank">NVIDIA モバイルグラフィックス・スペック性能比較|パソコン実験工房資料室</a></strong>で確認されるほかのGeForceシリーズのGPUのスペックと比べてみる。</p>
+
+<ul>
+<li>コア
+Surface BookのGPUの搭載コアは、GM108というものである。これは、他のNVIDIAシリーズのGPUで言うと、
+<strong>GeForce 940M, 930M, 845M<sup class="footnote-ref" id="fnref:1"><a rel="footnote" href="#fn:1">1</a></sup>, 840M, 830M</strong>で採用されているらしい。
+現在のノートPC用の最新は<strong>GeForce 980</strong>なので、決して新しくはなさそうである。</li>
+<li>メモリ
+ノートPC用のGeForce GTXシリーズでは、<strong>DDR3</strong>と<strong>GDDR5</strong>の2種類のメモリが利用されている。GPU-Zで確認されたSurface BookのGPUの搭載メモリは、高性能のGDDR5の方だった。
+メモリ容量は、多くのGeForce900M/800Mシリーズが2GB以上であるのに対し、Surface BookのGPUの搭載メモリは1024MBと小さい。</li>
+</ul>
+
+<h2 id="分かったこと">分かったこと</h2>
+
+<ul>
+<li>Surface Bookには、GeForce GPUが搭載されているけれど、仮想GPUは使えない。</li>
+<li>Surface Book搭載のGPUは、NVIDIA公式ページで確認されるどのバージョンのGeForceシリーズのGPUとも一致しない。
+スペック的には、GeForce 940M, 930M, 845M, 840M, 830Mが近い。決して新しくない。</li>
+</ul>
+
+<p>うーん、GPGPU目当てでSurfaceを買うのはやめた方がいいかも。
+次また時間があったら、Windows上でcudaインストールしてGPGPUできるか試してみようかなー。</p>
+<div class="footnotes">
+
+<hr />
+
+<ol>
+<li id="fn:1">GeForce 845MはNVIDIAの公式ページには載っていない。
+ <a class="footnote-return" href="#fnref:1"><sup>[return]</sup></a></li>
+</ol>
+</div>
+
         </div>
+        <div id="disqus_thread"></div>
+<script type="text/javascript">
+
+(function() {
+    
+    
+    
+    
+
+    var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+    var disqus_shortname = 'chie8842-hugo';
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
+        
+
+<footer>
+  <p class="meta">
+    <span class="byline author vcard">Posted by <span class="fn">Chie Hayashida</span></span>
+    
+    <time>Mar 14, 2017</time>
+    
+      <span class="categories">
+        Tags:
+        
+          <a class="category" href="https://hayashidac.github.io/blog/tags/surface">Surface</a>  <a class="category" href="https://hayashidac.github.io/blog/tags/gpu">GPU</a>  <a class="category" href="https://hayashidac.github.io/blog/tags/hyper-v">Hyper-V</a>  
+    
+    </span>
+  </p>
+
+  
+  
+
+  
+
+  <p class="meta">
+    
+        <a class="basic-alignment left" href="https://hayashidac.github.io/blog/2017/02/25/%E8%8B%B1%E8%AA%9E%E3%81%AE%E5%AD%A6%E7%BF%92%E3%83%84%E3%83%BC%E3%83%AB/" title="英語の学習ツール">英語の学習ツール</a>
+    
+
+    
+  </p>
+  
+</footer>
+
       </article>
     </div>
-
     
 
 <aside class="sidebar thirds">
