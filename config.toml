@@ -1,10 +1,10 @@
-baseurl = "https://hayashidac.github.io/blog/"
+baseurl = "https://chie8842.github.io/blog/"
 disablePathToLower = false
-languageCode = "ja"
+languageCode = "en-us"
 title = "Chie's Happy Engineer Life"
 theme = "Hugo-Octopress-Orange"
 publishDir = "docs"
-canonifyurls = false
+canonifyurls = true
 
 # Number of blog posts displayed in each page
 paginate = 6
@@ -37,7 +37,7 @@ aboutme = "/aboutme"
 # If navigationNewWindow does not exist or set to false then links will open in the same window
 [[menu.main]]
  Name = "Blog"
- URL = "/"
+ URL = "/blog/"
  weight = -5
 
 [[menu.main]]
@@ -56,7 +56,7 @@ aboutme = "/aboutme"
 
 [[menu.sidebar]]
  Name = "Blog"
- URL = "/"
+ URL = "/blog/"
  weight = 2
 
 [params]
@@ -93,7 +93,7 @@ sidebarText = """ただの日記です。技術的に学んだことも書こう
 
  # If set to true, navigation menu links will open in a new window with the exception of links to root ("\")
  # If this item does not exist or set to false, then navigation menu links will open in the same window
- navigationNewWindow = true
+ navigationNewWindow = false
 
  # If false, all of the post will appear on front page (and in pagination)
  truncate = true
